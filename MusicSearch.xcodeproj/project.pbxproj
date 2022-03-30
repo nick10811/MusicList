@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		9420575C27F48B6700601F4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9420575B27F48B6700601F4B /* AppDelegate.swift */; };
 		9420575E27F48B6700601F4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9420575D27F48B6700601F4B /* SceneDelegate.swift */; };
-		9420576027F48B6700601F4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9420575F27F48B6700601F4B /* ViewController.swift */; };
 		9420576527F48B6A00601F4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9420576427F48B6A00601F4B /* Assets.xcassets */; };
 		9420576827F48B6A00601F4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9420576627F48B6A00601F4B /* LaunchScreen.storyboard */; };
 		94B1308327F48C1100AFCE67 /* ItunesQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1308227F48C1100AFCE67 /* ItunesQueryService.swift */; };
+		94B1308527F48E8000AFCE67 /* MusicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1308427F48E8000AFCE67 /* MusicTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9420575827F48B6700601F4B /* MusicSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9420575B27F48B6700601F4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9420575D27F48B6700601F4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9420575F27F48B6700601F4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9420576427F48B6A00601F4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9420576727F48B6A00601F4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9420576927F48B6A00601F4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B1308227F48C1100AFCE67 /* ItunesQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesQueryService.swift; sourceTree = "<group>"; };
+		94B1308427F48E8000AFCE67 /* MusicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 				94B1308127F48C0000AFCE67 /* Lib */,
 				9420575B27F48B6700601F4B /* AppDelegate.swift */,
 				9420575D27F48B6700601F4B /* SceneDelegate.swift */,
-				9420575F27F48B6700601F4B /* ViewController.swift */,
+				94B1308427F48E8000AFCE67 /* MusicTableViewController.swift */,
 				9420576427F48B6A00601F4B /* Assets.xcassets */,
 				9420576627F48B6A00601F4B /* LaunchScreen.storyboard */,
 				9420576927F48B6A00601F4B /* Info.plist */,
@@ -145,8 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9420576027F48B6700601F4B /* ViewController.swift in Sources */,
 				9420575C27F48B6700601F4B /* AppDelegate.swift in Sources */,
+				94B1308527F48E8000AFCE67 /* MusicTableViewController.swift in Sources */,
 				94B1308327F48C1100AFCE67 /* ItunesQueryService.swift in Sources */,
 				9420575E27F48B6700601F4B /* SceneDelegate.swift in Sources */,
 			);
