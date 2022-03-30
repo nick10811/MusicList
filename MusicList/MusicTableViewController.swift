@@ -14,6 +14,7 @@ class MusicTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Music List"
         // register UITableCell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         fetchDate()
@@ -49,6 +50,12 @@ class MusicTableViewController: UITableViewController {
         
         cell.contentConfiguration = content
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let track = service.tracks[indexPath.row]
+        let vc = DetailViewController(track: track)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     /*
