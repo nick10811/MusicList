@@ -33,14 +33,14 @@ class MusicTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let model = service.tracks[indexPath.row]
+        let track = service.tracks[indexPath.row]
         var content = cell.defaultContentConfiguration()
-        content.text = "\(model.name)(\(model.artist))"
-        content.secondaryText = model.collectionViewURL.absoluteString
+        content.text = "\(track.name)(\(track.artist))"
+        content.secondaryText = track.collectionViewURL.absoluteString
         
         // setup image
         do {
-            let data = try Data(contentsOf: model.artworkURL)
+            let data = try Data(contentsOf: track.artworkURL)
             let image = UIImage(data: data)
             content.image = image
             

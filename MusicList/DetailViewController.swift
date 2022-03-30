@@ -24,9 +24,9 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .white
         title = "Details"
         
-        let firstRow  = makeRow(title: "Name: ", content: track.name)
-        let secondRow = makeRow(title: "Artist: ", content: track.artist)
-        let thirdRow  = makeRow(title: "URL: ", content: track.collectionViewURL.absoluteString)
+        let firstRow  = makeRow(of: "Name: ", with: track.name)
+        let secondRow = makeRow(of: "Artist: ", with: track.artist)
+        let thirdRow  = makeRow(of: "URL: ", with: track.collectionViewURL.absoluteString)
         let fourthRow  = UIImageView(image: UIImage(systemName: "photo"))
         do {
             let data = try Data(contentsOf: track.artworkURL)
@@ -38,7 +38,6 @@ class DetailViewController: UIViewController {
         }
         
         @UseAutoLayout var contentView = UIStackView(arrangedSubviews: [firstRow, secondRow, thirdRow, fourthRow])
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.axis = .vertical
         contentView.distribution = .fill
         contentView.spacing = 10
@@ -63,7 +62,7 @@ extension DetailViewController {
         return label
     }
     
-    private func makeRow(title: String, content: String) -> UIView {
+    private func makeRow(of title: String, with content: String) -> UIView {
         let titleLabel = makeLabel(with: title)
         let contentLabel = makeLabel(with: content)
         @UseAutoLayout var contentView = UIStackView(arrangedSubviews: [titleLabel, contentLabel])
