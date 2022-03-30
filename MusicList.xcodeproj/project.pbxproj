@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9420575827F48B6700601F4B /* MusicSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9420575827F48B6700601F4B /* MusicList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9420575B27F48B6700601F4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9420575D27F48B6700601F4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9420576427F48B6A00601F4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		9420574F27F48B6700601F4B = {
 			isa = PBXGroup;
 			children = (
-				9420575A27F48B6700601F4B /* MusicSearch */,
+				9420575A27F48B6700601F4B /* MusicList */,
 				9420575927F48B6700601F4B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		9420575927F48B6700601F4B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9420575827F48B6700601F4B /* MusicSearch.app */,
+				9420575827F48B6700601F4B /* MusicList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9420575A27F48B6700601F4B /* MusicSearch */ = {
+		9420575A27F48B6700601F4B /* MusicList */ = {
 			isa = PBXGroup;
 			children = (
 				94B1308127F48C0000AFCE67 /* Lib */,
@@ -64,7 +64,7 @@
 				9420576627F48B6A00601F4B /* LaunchScreen.storyboard */,
 				9420576927F48B6A00601F4B /* Info.plist */,
 			);
-			path = MusicSearch;
+			path = MusicList;
 			sourceTree = "<group>";
 		};
 		94B1308127F48C0000AFCE67 /* Lib */ = {
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9420575727F48B6700601F4B /* MusicSearch */ = {
+		9420575727F48B6700601F4B /* MusicList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9420576C27F48B6A00601F4B /* Build configuration list for PBXNativeTarget "MusicSearch" */;
+			buildConfigurationList = 9420576C27F48B6A00601F4B /* Build configuration list for PBXNativeTarget "MusicList" */;
 			buildPhases = (
 				9420575427F48B6700601F4B /* Sources */,
 				9420575527F48B6700601F4B /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = MusicSearch;
+			name = MusicList;
 			productName = MusicSearch;
-			productReference = 9420575827F48B6700601F4B /* MusicSearch.app */;
+			productReference = 9420575827F48B6700601F4B /* MusicList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9420575327F48B6700601F4B /* Build configuration list for PBXProject "MusicSearch" */;
+			buildConfigurationList = 9420575327F48B6700601F4B /* Build configuration list for PBXProject "MusicList" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9420575727F48B6700601F4B /* MusicSearch */,
+				9420575727F48B6700601F4B /* MusicList */,
 			);
 		};
 /* End PBXProject section */
@@ -291,7 +291,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KDFS53L46Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MusicSearch/Info.plist;
+				INFOPLIST_FILE = MusicList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -301,7 +301,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nick10811.MusicSearch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nick10811.MusicList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -318,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KDFS53L46Q;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MusicSearch/Info.plist;
+				INFOPLIST_FILE = MusicList/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -328,7 +328,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nick10811.MusicSearch;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nick10811.MusicList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -339,7 +339,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9420575327F48B6700601F4B /* Build configuration list for PBXProject "MusicSearch" */ = {
+		9420575327F48B6700601F4B /* Build configuration list for PBXProject "MusicList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9420576A27F48B6A00601F4B /* Debug */,
@@ -348,7 +348,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9420576C27F48B6A00601F4B /* Build configuration list for PBXNativeTarget "MusicSearch" */ = {
+		9420576C27F48B6A00601F4B /* Build configuration list for PBXNativeTarget "MusicList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9420576D27F48B6A00601F4B /* Debug */,
