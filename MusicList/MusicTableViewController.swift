@@ -37,6 +37,16 @@ class MusicTableViewController: UITableViewController {
         content.text = "\(model.name)(\(model.artist))"
         content.secondaryText = model.collectionViewURL.absoluteString
         
+        // setup image
+        do {
+            let data = try Data(contentsOf: model.artworkURL)
+            let image = UIImage(data: data)
+            content.image = image
+            
+        } catch {
+            print("Cannot download image")
+        }
+        
         cell.contentConfiguration = content
         return cell
     }
