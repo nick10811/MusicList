@@ -45,8 +45,8 @@ class MusicTableViewController: UITableViewController {
 
         let track = service.tracks[indexPath.row]
         var content = cell.defaultContentConfiguration()
-        content.text = "\(track.name)(\(track.artist))"
-        content.secondaryText = track.collectionViewURL.absoluteString
+        content.text = "\(track.name)"
+        content.secondaryText = track.artist
         
         // setup image
         do {
