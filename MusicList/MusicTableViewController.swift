@@ -9,12 +9,22 @@ import UIKit
 
 class MusicTableViewController: UITableViewController {
     
-    let service = ItunesQueryService.shared
+    private let service = ItunesQueryService.shared
+    
+    private lazy var searchController: UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchResultsUpdater = self
+        sc.delegate = self
+        sc.searchBar.placeholder = "Song, Artist, ..."
+        sc.searchBar.autocapitalizationType = .allCharacters
+        return sc
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Music List"
+        navigationItem.searchController = searchController
         // register UITableCell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         fetchData()
@@ -92,17 +102,7 @@ class MusicTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
 
 extension MusicTableViewController {
@@ -111,6 +111,17 @@ extension MusicTableViewController {
         service.tracksUpdate = { [weak self] in
             self?.hideIndicatorView()
             self?.tableView.reloadData()
+        }
+    }
+    
+}
+
+// MARK: - UISearchControllerDelegate, UISearchResultsUpdating
+extension MusicTableViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchedText = searchController.searchBar.text {
+            showIndicatorView()
+            service.searchText = searchedText.isEmpty ? "Coldplay" : searchedText
         }
     }
     
