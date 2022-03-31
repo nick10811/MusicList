@@ -17,6 +17,10 @@ class MusicTableViewController: UITableViewController {
         title = "Music List"
         // register UITableCell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchDate()
     }
 
@@ -107,7 +111,9 @@ class MusicTableViewController: UITableViewController {
 
 extension MusicTableViewController {
     private func fetchDate() {
+        showIndicatorView()
         service.tracksUpdate = { [weak self] in
+            self?.hideIndicatorView()
             self?.tableView.reloadData()
         }
     }

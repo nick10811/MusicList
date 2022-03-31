@@ -73,21 +73,5 @@ extension DetailViewController {
         ])
         return contentView
     }
-}
-
-@propertyWrapper
-struct UseAutoLayout<T: UIView> {
-    var wrappedValue: T {
-        didSet { setAutoLayout() }
-    }
     
-    init(wrappedValue: T) {
-        self.wrappedValue = wrappedValue
-        setAutoLayout()
-    }
-    
-    func setAutoLayout() {
-        wrappedValue.translatesAutoresizingMaskIntoConstraints = false
-    }
 }
-
