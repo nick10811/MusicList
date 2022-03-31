@@ -17,13 +17,9 @@ class MusicTableViewController: UITableViewController {
         title = "Music List"
         // register UITableCell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         fetchDate()
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
