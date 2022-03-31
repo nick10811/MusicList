@@ -17,7 +17,7 @@ class MusicTableViewController: UITableViewController {
         title = "Music List"
         // register UITableCell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        fetchDate()
+        fetchData()
     }
     
     // MARK: - Table view data source
@@ -106,7 +106,7 @@ class MusicTableViewController: UITableViewController {
 }
 
 extension MusicTableViewController {
-    private func fetchDate() {
+    private func fetchData() {
         showIndicatorView()
         service.tracksUpdate = { [weak self] in
             self?.hideIndicatorView()

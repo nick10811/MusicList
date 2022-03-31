@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
         let firstRow  = makeRow(of: "Name: ", with: track.name)
         let secondRow = makeRow(of: "Artist: ", with: track.artist)
         let thirdRow  = makeRow(of: "URL: ", with: track.collectionViewURL.absoluteString)
-        let fourthRow  = UIImageView(image: UIImage(systemName: "photo"))
+        let fourthRow = UIImageView(image: UIImage(systemName: "photo"))
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             do {
