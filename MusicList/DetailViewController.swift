@@ -28,13 +28,18 @@ class DetailViewController: UIViewController {
         let secondRow = makeRow(of: "Artist: ", with: track.artist)
         let thirdRow  = makeRow(of: "URL: ", with: track.collectionViewURL.absoluteString)
         let fourthRow  = UIImageView(image: UIImage(systemName: "photo"))
-        do {
-            let data = try Data(contentsOf: track.artworkURL)
-            let image = UIImage(data: data)
-            fourthRow.image = image
-            
-        } catch {
-            print("Cannot download image")
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
+            do {
+                let data = try Data(contentsOf: self.track.artworkURL)
+                let image = UIImage(data: data)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    fourthRow.image = image
+                }
+                
+            } catch {
+                print("Cannot download image")
+            }
         }
         
         @UseAutoLayout var contentView = UIStackView(arrangedSubviews: [firstRow, secondRow, thirdRow, fourthRow])
