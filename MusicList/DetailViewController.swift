@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var track: Track
+    private var track: Track
     
     init(track: Track) {
         self.track = track
