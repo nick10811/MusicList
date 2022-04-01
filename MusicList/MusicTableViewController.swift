@@ -64,6 +64,7 @@ class MusicTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let track = service.tracks[indexPath.row]
         let vc = DetailViewController(track: track)
         self.navigationController?.pushViewController(vc, animated: true)
