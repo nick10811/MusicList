@@ -49,13 +49,14 @@ class MusicTableViewController: UITableViewController {
         content.secondaryText = track.artist
         
         // setup image
-        do {
-            let data = try Data(contentsOf: track.artworkURL)
+        content.image = UIImage(systemName: "photo")
+        DispatchQueue.global().async {
+            guard let data = try? Data(contentsOf: track.artworkURL) else { return }
             let image = UIImage(data: data)
-            content.image = image
-            
-        } catch {
-            print("Cannot download image")
+            DispatchQueue.main.async {
+                content.image = image
+                cell.contentConfiguration = content
+            }
         }
         
         cell.contentConfiguration = content
