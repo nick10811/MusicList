@@ -28,3 +28,38 @@ extension UIViewController {
         }
     }
 }
+
+protocol ViewModel {
+    func configCell(_ track: Track)
+    func downloadImage(with url: URL, completion: @escaping (UIImage?) -> Void)
+}
+
+extension UITableViewCell: ViewModel {
+    func configCell(_ track: Track) {
+        var content = self.defaultContentConfiguration()
+        content.text = "\(track.name)"
+        content.secondaryText = track.artist
+        DispatchQueue.global().async { [weak self] in
+            self?.downloadImage(with: track.artworkURL) { [weak self] image in
+                DispatchQueue.main.async {
+                    content.image = image
+                    self?.contentConfiguration = content
+                }
+            }
+        }
+        content.image = UIImage(systemName: "photo")
+        self.contentConfiguration = content
+    }
+    
+    func downloadImage(with url: URL, completion: @escaping (UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let data = data else { return }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                completion(image)
+            }
+        }
+        task.resume()
+    }
+    
+}

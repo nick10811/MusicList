@@ -25,7 +25,6 @@ class MusicTableViewController: UITableViewController {
         
         title = "Music List"
         navigationItem.searchController = searchController
-        // register UITableCell
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         fetchData()
     }
@@ -42,24 +41,8 @@ class MusicTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-
         let track = service.tracks[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = "\(track.name)"
-        content.secondaryText = track.artist
-        
-        // setup image
-        content.image = UIImage(systemName: "photo")
-        DispatchQueue.global().async {
-            guard let data = try? Data(contentsOf: track.artworkURL) else { return }
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                content.image = image
-                cell.contentConfiguration = content
-            }
-        }
-        
-        cell.contentConfiguration = content
+        cell.configCell(track)
         return cell
     }
     
@@ -107,6 +90,7 @@ class MusicTableViewController: UITableViewController {
     
 }
 
+// MARK: - Private Functions
 extension MusicTableViewController {
     private func fetchData() {
         showIndicatorView()
