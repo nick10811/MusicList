@@ -48,6 +48,8 @@ extension UITableViewCell: ViewModel {
             }
         }
         content.image = UIImage(systemName: "photo")
+        content.imageProperties.reservedLayoutSize = CGSize(width: 64, height: 64)
+        content.imageProperties.maximumSize = CGSize(width: 50, height: 50)
         self.contentConfiguration = content
     }
     
