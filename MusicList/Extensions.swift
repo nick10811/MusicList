@@ -39,6 +39,8 @@ enum NetworkError: Error {
     case invalidData
 }
 
+fileprivate var imageCache = NSCache<NSURL, UIImage>()
+
 extension UITableViewCell: ViewModel {
     
     func configCell(_ track: Track) {
@@ -67,6 +69,11 @@ extension UITableViewCell: ViewModel {
     }
     
     func downloadImage(with url: URL, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        if let image = imageCache.object(forKey: url as NSURL) {
+            completion(.success(image))
+            return
+        }
+        
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(.requestError(error)))
@@ -81,6 +88,7 @@ extension UITableViewCell: ViewModel {
             }
             
             DispatchQueue.main.async {
+                imageCache.setObject(image, forKey: url as NSURL)
                 completion(.success(image))
             }
         }
