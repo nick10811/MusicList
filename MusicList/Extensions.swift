@@ -31,19 +31,32 @@ extension UIViewController {
 
 protocol ViewModel {
     func configCell(_ track: Track)
-    func downloadImage(with url: URL, completion: @escaping (UIImage?) -> Void)
+    func downloadImage(with url: URL, completion: @escaping (Result<UIImage, NetworkError>) -> Void)
+}
+
+enum NetworkError: Error {
+    case requestError(Error)
+    case invalidData
 }
 
 extension UITableViewCell: ViewModel {
+    
     func configCell(_ track: Track) {
         var content = self.defaultContentConfiguration()
         content.text = "\(track.name)"
         content.secondaryText = track.artist
         DispatchQueue.global().async { [weak self] in
-            self?.downloadImage(with: track.artworkURL) { [weak self] image in
+            self?.downloadImage(with: track.artworkURL) { [weak self] result in
                 DispatchQueue.main.async {
-                    content.image = image
-                    self?.contentConfiguration = content
+                    switch result {
+                    case .success(let image):
+                        content.image = image
+                        self?.contentConfiguration = content
+                    case .failure(let error):
+                        print("load image failed: \(error.localizedDescription)")
+                        content.image = UIImage(systemName: "photo")
+                        self?.contentConfiguration = content
+                    }
                 }
             }
         }
@@ -53,12 +66,22 @@ extension UITableViewCell: ViewModel {
         self.contentConfiguration = content
     }
     
-    func downloadImage(with url: URL, completion: @escaping (UIImage?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else { return }
+    func downloadImage(with url: URL, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                completion(.failure(.requestError(error)))
+                return
+            }
+            
+            guard let data = data,
+                  let image = UIImage(data: data)
+            else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
             DispatchQueue.main.async {
-                let image = UIImage(data: data)
-                completion(image)
+                completion(.success(image))
             }
         }
         task.resume()
