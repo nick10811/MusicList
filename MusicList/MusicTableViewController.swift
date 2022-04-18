@@ -25,7 +25,7 @@ class MusicTableViewController: UITableViewController {
         
         title = "Music List"
         navigationItem.searchController = searchController
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(MusicCell.self, forCellReuseIdentifier: MusicCell.identifier)
         fetchData()
     }
     
@@ -40,10 +40,15 @@ class MusicTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        var cell = tableView.dequeueReusableCell(withIdentifier: MusicCell.identifier, for: indexPath) as? MusicCell
+        if cell == nil {
+            cell = MusicCell()
+        }
+        
         let track = service.tracks[indexPath.row]
-        cell.configCell(track)
-        return cell
+        cell!.configCell(track)
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

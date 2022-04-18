@@ -11,6 +11,7 @@
 		9420575E27F48B6700601F4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9420575D27F48B6700601F4B /* SceneDelegate.swift */; };
 		9420576527F48B6A00601F4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9420576427F48B6A00601F4B /* Assets.xcassets */; };
 		9420576827F48B6A00601F4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9420576627F48B6A00601F4B /* LaunchScreen.storyboard */; };
+		946D09FA280DACB60019297D /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D09F9280DACB60019297D /* MusicCell.swift */; };
 		94B1308327F48C1100AFCE67 /* ItunesQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1308227F48C1100AFCE67 /* ItunesQueryService.swift */; };
 		94B1308527F48E8000AFCE67 /* MusicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1308427F48E8000AFCE67 /* MusicTableViewController.swift */; };
 		94B1308727F4AB1400AFCE67 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B1308627F4AB1400AFCE67 /* DetailViewController.swift */; };
@@ -25,6 +26,7 @@
 		9420576427F48B6A00601F4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9420576727F48B6A00601F4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9420576927F48B6A00601F4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946D09F9280DACB60019297D /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		94B1308227F48C1100AFCE67 /* ItunesQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesQueryService.swift; sourceTree = "<group>"; };
 		94B1308427F48E8000AFCE67 /* MusicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewController.swift; sourceTree = "<group>"; };
 		94B1308627F4AB1400AFCE67 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				9420575D27F48B6700601F4B /* SceneDelegate.swift */,
 				94B1308427F48E8000AFCE67 /* MusicTableViewController.swift */,
 				94B1308627F4AB1400AFCE67 /* DetailViewController.swift */,
+				946D09F9280DACB60019297D /* MusicCell.swift */,
 				F3936D5D27F53D7F00198D33 /* Extensions.swift */,
 				F3936D5F27F53E9400198D33 /* Utility.swift */,
 				9420576427F48B6A00601F4B /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 				F3936D6027F53E9400198D33 /* Utility.swift in Sources */,
 				9420575C27F48B6700601F4B /* AppDelegate.swift in Sources */,
 				F3936D5E27F53D8000198D33 /* Extensions.swift in Sources */,
+				946D09FA280DACB60019297D /* MusicCell.swift in Sources */,
 				94B1308527F48E8000AFCE67 /* MusicTableViewController.swift in Sources */,
 				94B1308727F4AB1400AFCE67 /* DetailViewController.swift in Sources */,
 				94B1308327F48C1100AFCE67 /* ItunesQueryService.swift in Sources */,
