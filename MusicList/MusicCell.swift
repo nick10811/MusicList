@@ -22,22 +22,27 @@ fileprivate var imageCache = NSCache<NSURL, UIImage>()
 class MusicCell: UITableViewCell, ViewModel {
     
     static let identifier = "Music Cell"
+    private let maxFetchCount = 2
+    private var fetchCount = 0
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        fetchCount = 0
     }
     
     func configCell(_ track: Track) {
         var content = self.defaultContentConfiguration()
         content.text = "\(track.name)"
         content.secondaryText = track.artist
+        content.image = UIImage(systemName: "photo")
+        content.imageProperties.reservedLayoutSize = CGSize(width: 64, height: 64)
+        content.imageProperties.maximumSize = CGSize(width: 50, height: 50)
+
+        guard fetchCount < maxFetchCount else {
+            self.contentConfiguration = content
+            return
+        }
+        fetchCount += 1
+        
         DispatchQueue.global().async { [weak self] in
             self?.downloadImage(with: track.artworkURL) { [weak self] result in
                 DispatchQueue.main.async {
@@ -47,15 +52,11 @@ class MusicCell: UITableViewCell, ViewModel {
                         self?.contentConfiguration = content
                     case .failure(let error):
                         print("load image failed: \(error.localizedDescription)")
-                        content.image = UIImage(systemName: "photo")
-                        self?.contentConfiguration = content
+                        self?.configCell(track)
                     }
                 }
             }
         }
-        content.image = UIImage(systemName: "photo")
-        content.imageProperties.reservedLayoutSize = CGSize(width: 64, height: 64)
-        content.imageProperties.maximumSize = CGSize(width: 50, height: 50)
         self.contentConfiguration = content
     }
     
