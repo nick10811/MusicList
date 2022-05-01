@@ -41,7 +41,7 @@ class MusicCell: UITableViewCell, ViewModel {
         fetchCount += 1
         
         DispatchQueue.global().async { [weak self] in
-            ImageDownloadService.shared.downloadImage(with: track.artworkURL) { [weak self] result in
+            _ = ImageDownloadService.shared.downloadImage(with: track.artworkURL) { [weak self] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let image):
