@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     private var track: Track
+    private var imageID: UUID? = nil
+    private var stopToDownload = false
     
     init(track: Track) {
         self.track = track
@@ -28,18 +30,26 @@ class DetailViewController: UIViewController {
         let secondRow = makeRow(of: "Artist: ", with: track.artist)
         let thirdRow  = makeRow(of: "URL: ", with: track.collectionViewURL.absoluteString)
         let fourthRow = UIImageView(image: UIImage(systemName: "photo"))
+        // it needs to turn on in the UIImageView if you have customized gesture
+        fourthRow.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(stopDownloadingImage(_:)))
+        fourthRow.addGestureRecognizer(tapGesture)
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
-            do {
-                let data = try Data(contentsOf: self.track.artworkURL)
-                let image = UIImage(data: data)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    fourthRow.image = image
+            self.imageID = ImageDownloadService.shared.downloadImage(with: self.track.artworkURL, completion: { result in
+                switch result {
+                case .success(let image):
+                    DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+                        if !self.stopToDownload {
+                            fourthRow.image = image
+                        }
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.showError(message: error.localizedDescription)
+                    }
                 }
-                
-            } catch {
-                print("Cannot download image")
-            }
+            })
         }
         
         @UseAutoLayout var contentView = UIStackView(arrangedSubviews: [firstRow, secondRow, thirdRow, fourthRow])
@@ -53,6 +63,10 @@ class DetailViewController: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             fourthRow.heightAnchor.constraint(equalTo: contentView.widthAnchor)
         ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        stopToDownload = false
     }
     
 }
@@ -79,4 +93,21 @@ extension DetailViewController {
         return contentView
     }
     
+    @objc private func stopDownloadingImage(_ sender: UIGestureRecognizer) {
+        print("tap gesture is clicking.")
+        
+        let alertController = UIAlertController(title: "Alert", message: "Do you want to stop to download the image?", preferredStyle: .alert)
+        let noAction = UIAlertAction(title: "NO", style: .cancel, handler: nil)
+        let yesAction = UIAlertAction(title: "YES", style: .default) { [weak self] action in
+            if let uuid = self?.imageID {
+                ImageDownloadService.shared.cancelLoad(uuid)
+            }
+            self?.stopToDownload = true
+            self?.imageID = nil
+        }
+        
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

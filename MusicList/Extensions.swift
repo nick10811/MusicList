@@ -27,4 +27,13 @@ extension UIViewController {
             found.removeFromSuperview()
         }
     }
+    
+    func showError(title: String = "Error", message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            self?.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
